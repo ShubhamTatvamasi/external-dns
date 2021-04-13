@@ -29,3 +29,7 @@ spec:
 EOF
 ```
 
+```bash
+git clone https://github.com/kubernetes-sigs/external-dns.git --depth 1
+docker build -t shubhamtatvamasi/external-dns --build-arg ARCH=amd64 .
+```
