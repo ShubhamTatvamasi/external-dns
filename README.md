@@ -1,5 +1,17 @@
 # external-dns
 
+
+create new namespace:
+```bash
+kubectl create ns external-dns
+```
+
+delete external-dns:
+```bash
+kubectl delete -f https://github.com/ShubhamTatvamasi/external-dns/raw/master/externaldns.yaml
+```
+
+create ingress value:
 ```
 kubectl apply -f - << EOF
 apiVersion: networking.k8s.io/v1
@@ -24,6 +36,7 @@ spec:
 EOF
 ```
 
+build new image:
 ```bash
 git clone https://github.com/kubernetes-sigs/external-dns.git --depth 1
 docker build -t shubhamtatvamasi/external-dns --build-arg ARCH=amd64 .
