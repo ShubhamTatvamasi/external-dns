@@ -1,31 +1,26 @@
 # external-dns
 
-
-```bash
+```
 kubectl apply -f - << EOF
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: networking.k8s.io/v1
+kind: Ingress
 metadata:
-  name: external-dns
+  name: nginx
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: nginx.superman.shubhamtatvamasi.com
+    external-dns.alpha.kubernetes.io/ttl: "600"
 spec:
-  strategy:
-    type: Recreate
-  selector:
-    matchLabels:
-      app: external-dns
-  template:
-    metadata:
-      labels:
-        app: external-dns
-    spec:
-      containers:
-      - name: external-dns
-        image: k8s.gcr.io/external-dns/external-dns:v0.7.7
-        args:
-        - --source=ingress
-        - --provider=godaddy
-        - --godaddy-api-key=<Your API Key>
-        - --godaddy-api-secret=<Your API secret>
+  rules:
+  - host: nginx.superman.shubhamtatvamasi.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: nginx
+            port:
+              number: 80
 EOF
 ```
 
