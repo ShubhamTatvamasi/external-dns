@@ -9,6 +9,7 @@ delete external-dns:
 ```bash
 kubectl delete -f https://github.com/ShubhamTatvamasi/external-dns/raw/master/externaldns.yaml
 ```
+---
 
 create a deployment and service:
 ```bash
@@ -45,6 +46,7 @@ spec:
               number: 80
 EOF
 ```
+---
 
 build new image:
 ```bash
