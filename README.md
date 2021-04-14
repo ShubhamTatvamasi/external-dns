@@ -1,6 +1,5 @@
 # external-dns
 
-
 create new namespace:
 ```bash
 kubectl create ns external-dns
@@ -19,11 +18,16 @@ kind: Ingress
 metadata:
   name: nginx
   annotations:
-    external-dns.alpha.kubernetes.io/hostname: nginx.superman.shubhamtatvamasi.com
+    external-dns.alpha.kubernetes.io/hostname: nginx.google.shubhamtatvamasi.com
     external-dns.alpha.kubernetes.io/ttl: "600"
+    cert-manager.io/cluster-issuer: letsencrypt
 spec:
+  tls:
+  - hosts:
+      - nginx.google.shubhamtatvamasi.com
+    secretName: nginx-tls
   rules:
-  - host: nginx.superman.shubhamtatvamasi.com
+  - host: nginx.google.shubhamtatvamasi.com
     http:
       paths:
       - path: /
