@@ -10,6 +10,12 @@ delete external-dns:
 kubectl delete -f https://github.com/ShubhamTatvamasi/external-dns/raw/master/externaldns.yaml
 ```
 
+create a deployment and service:
+```bash
+kubectl create deployment nginx --image=nginx:alpine
+kubectl expose deployment nginx --port=80 --name=nginx
+```
+
 create ingress value:
 ```
 kubectl apply -f - << EOF
