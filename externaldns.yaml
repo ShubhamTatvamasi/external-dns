@@ -61,3 +61,6 @@ spec:
         - --provider=godaddy
         - --godaddy-api-key=<Your API Key>
         - --godaddy-api-secret=<Your API secret>
+        - --godaddy-api-ttl=600
+
+
