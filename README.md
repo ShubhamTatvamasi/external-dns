@@ -26,12 +26,7 @@ metadata:
   name: nginx
   annotations:
     external-dns.alpha.kubernetes.io/hostname: nginx.google.shubhamtatvamasi.com
-    cert-manager.io/cluster-issuer: letsencrypt
 spec:
-  tls:
-  - hosts:
-      - nginx.google.shubhamtatvamasi.com
-    secretName: nginx-tls
   rules:
   - host: nginx.google.shubhamtatvamasi.com
     http:
